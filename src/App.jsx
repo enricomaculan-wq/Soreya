@@ -1,4 +1,4 @@
-export default function SoreyaInvestorSite() {
+function HomePage() {
   const navItems = [
     { label: 'Platform', href: '#platform' },
     { label: 'Why it matters', href: '#why' },
@@ -282,9 +282,97 @@ export default function SoreyaInvestorSite() {
             <a href="mailto:support@soreya.app" className="transition hover:text-white">support@soreya.app</a>
             <span>soreya.app</span>
             <span>soreya.it</span>
+            <a href="/privacy" className="transition hover:text-white">Privacy</a>
           </div>
         </div>
       </footer>
     </div>
   );
+}
+
+function PrivacyPage() {
+  return (
+    <div className="min-h-screen bg-slate-950 text-slate-100">
+      <header className="border-b border-white/10 bg-slate-950/80 backdrop-blur-xl">
+        <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
+          <div className="flex items-center gap-3">
+            <img
+              src="/AppIcon-ios-marketing-1024x1024@1x.png"
+              alt="Soreya logo"
+              className="h-10 w-10 rounded-2xl border border-white/10"
+            />
+            <div>
+              <p className="text-lg font-semibold text-white">Soreya</p>
+              <p className="text-xs uppercase tracking-[0.22em] text-slate-400">Privacy Policy</p>
+            </div>
+          </div>
+          <a href="/" className="rounded-full border border-white/10 px-4 py-2 text-sm text-slate-300 transition hover:bg-white/5 hover:text-white">
+            Back to home
+          </a>
+        </div>
+      </header>
+
+      <main className="mx-auto max-w-5xl px-6 py-16">
+        <div className="max-w-3xl">
+          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-300">Privacy / Informativa sulla privacy</p>
+          <h1 className="mt-4 text-4xl font-semibold text-white md:text-5xl">Privacy Policy</h1>
+          <p className="mt-6 text-lg leading-8 text-slate-300">
+            This page provides a simple overview of how contact data shared through the Soreya website may be handled.
+          </p>
+          <p className="mt-4 text-lg leading-8 text-slate-400">
+            Questa pagina fornisce una panoramica semplice su come i dati di contatto condivisi tramite il sito Soreya possono essere trattati.
+          </p>
+        </div>
+
+        <div className="mt-12 grid gap-6">
+          {[
+            {
+              title: 'Who we are / Titolare del trattamento',
+              body: 'Soreya is the project presented on this website. For information requests, you can contact support@soreya.app.',
+            },
+            {
+              title: 'What data may be collected / Dati che possono essere raccolti',
+              body: 'If you contact us directly, we may receive your name, email address, company details and any information you choose to share in your message.',
+            },
+            {
+              title: 'Why we use it / Finalità del trattamento',
+              body: 'We use contact information only to reply to enquiries, discuss partnerships or investment opportunities, and manage follow-up communications related to Soreya.',
+            },
+            {
+              title: 'Data minimization / Minimizzazione dei dati',
+              body: 'We aim to collect only the information that is necessary to respond to your request and continue any relevant conversation.',
+            },
+            {
+              title: 'Sharing / Condivisione',
+              body: 'We do not sell contact data. Information may be shared only when necessary for legitimate operational purposes related to the project, such as internal follow-up with relevant stakeholders.',
+            },
+            {
+              title: 'Your rights / I tuoi diritti',
+              body: 'You may request access, correction or deletion of the personal information you have shared with us by writing to support@soreya.app.',
+            },
+          ].map((item) => (
+            <section key={item.title} className="rounded-3xl border border-white/10 bg-white/5 p-7">
+              <h2 className="text-2xl font-semibold text-white">{item.title}</h2>
+              <p className="mt-4 leading-8 text-slate-300">{item.body}</p>
+            </section>
+          ))}
+        </div>
+
+        <div className="mt-10 rounded-3xl border border-cyan-400/20 bg-cyan-400/10 p-6 text-slate-200">
+          <p className="font-medium">Contact / Contatti</p>
+          <p className="mt-2">support@soreya.app</p>
+        </div>
+      </main>
+    </div>
+  );
+}
+
+export default function SoreyaInvestorSite() {
+  const path = typeof window !== 'undefined' ? window.location.pathname : '/';
+
+  if (path === '/privacy') {
+    return <PrivacyPage />;
+  }
+
+  return <HomePage />;
 }
